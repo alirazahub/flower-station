@@ -1,0 +1,138 @@
+.navbar-container {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    height: 60px;
+    position: relative;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #1E1E1E;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.icon-btn:hover {
+    color: #1E1E1E;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.mobile-toggles {
+    display: none;
+    gap: 20px;
+}
+
+.desktop-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+    white-space: nowrap;
+    align-items: center;
+}
+
+.desktop-links li a {
+    text-decoration: none;
+    color: #1E1E1E;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    position: relative;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.desktop-links li a span{
+    margin-left: 6px;
+}
+
+.desktop-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: #353535;
+    transition: width 0.3s ease-in-out;
+}
+
+.desktop-links li a:hover::after {
+    width: 100%;
+}
+
+.navbar-center-logo {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.cart-container {
+    position: relative;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.cart-icon {
+    transform: scaleX(-1);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #222;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1100px) {
+    .desktop-links {
+        display: none;
+    }
+
+    .mobile-toggles {
+        display: flex;
+    }
+
+    .navbar-center-logo {
+        display: block;
+    }
+
+    .navbar-container {
+        padding: 15px 20px;
+    }
+
+    .navbar-left {
+        flex: 0;
+    }
+}
