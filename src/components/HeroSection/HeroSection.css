@@ -1,0 +1,185 @@
+.hero-wrapper {
+    display: flex;
+    width: 100%;
+    height: 400px;
+    position: relative;
+    font-family: 'Times New Roman', serif;
+    overflow: hidden;
+}
+
+.hero-left-panel {
+    width: 43%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+    transition: background-color 0.5s ease, color 0.3s ease;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+.hero-content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 65%;
+}
+
+.desktop-logo-wrapper {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    font-family: "Frank Ruhl Libre", serif;
+}
+
+.hero-cta {
+    padding: 16px 30px;
+    border: none;
+    font-size: 16px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: 600;
+    transition: transform 0.2s;
+    width: 100%;
+}
+
+.hero-footer-text {
+    font-size: 10px;
+    line-height: 1.4;
+    opacity: 0.8;
+}
+
+.hero-right-panel {
+    width: 70%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid #ffffff;
+    box-sizing: border-box;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.mobile-overlay {
+    display: none;
+}
+
+.hero-tabs-container {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+    width: 100%;
+    justify-content: center;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 8px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    transition: color 0.3s;
+}
+
+.tab-btn.active {
+    color: white;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    background-color: white;
+    z-index: 2;
+    animation: fillBar 4s linear forwards;
+}
+
+@keyframes fillBar {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@media (max-width: 960px) {
+    .hero-wrapper {
+        display: block;
+        height: 500px;
+    }
+
+    .hero-right-panel {
+        border-left: none;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+
+    .desktop-logo-wrapper {
+        display: none;
+    }
+
+    .mobile-overlay {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-left-panel {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: transparent !important;
+        color: white !important;
+        z-index: 5;
+        padding: 20px;
+    }
+
+    .hero-title {
+        font-size: 32px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-cta {
+        background-color: white !important;
+        color: black !important;
+    }
+}
