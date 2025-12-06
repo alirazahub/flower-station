@@ -182,8 +182,13 @@
         background-color: white !important;
         color: black !important;
     }
+    .hero-left-panel {
+        pointer-events: none;
+    }
 
-    .hero-right-panel {
-        z-index: 6;
+    .hero-left-panel .hero-cta,
+    .hero-left-panel button,
+    .hero-left-panel a {
+        pointer-events: auto;
     }
 }
