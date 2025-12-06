@@ -1,13 +1,13 @@
 import React from 'react'
 import TopBar from './components/TopBar/TopBar'
-import Navbar from './components/NavBar/Navbar'
+import NavBar from './components/NavBar/NavBar'
 import HeroSection from './components/HeroSection/HeroSection'
 
 const App = () => {
   return (
     <div>
       <TopBar/>
-      <Navbar/>
+      <NavBar/>
       <HeroSection/>
     </div>
   )
