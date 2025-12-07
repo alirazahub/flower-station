@@ -84,6 +84,7 @@ const Navbar = () => {
         <div className="cart-container">
           <FaShoppingCart size={22} className="cart-icon" />
           <span className="cart-badge">0</span>
+          <span className="cart-badge-desktop">0</span>
         </div>
 
         <button className="icon-btn">

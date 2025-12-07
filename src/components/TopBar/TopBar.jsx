@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './TopBar.css';
-import { FaInstagram, FaFacebookF, FaPinterestP, FaPhoneAlt, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
+import { FaInstagram, FaFacebookF, FaPinterest, FaLinkedinIn  } from 'react-icons/fa';
+import { IoIosMail } from 'react-icons/io';
+import { FaPhoneVolume } from 'react-icons/fa6';
 
 const TopBar = () => {
   const messages = [
@@ -32,10 +34,10 @@ const TopBar = () => {
       <div className="top-bar-left">
         <a href="#" className="icon-link"><FaInstagram /></a>
         <a href="#" className="icon-link"><FaFacebookF /></a>
-        <a href="#" className="icon-link"><FaPinterestP /></a>
-        <a href="#" className="icon-link"><FaPhoneAlt /></a>
+        <a href="#" className="icon-link"><FaPinterest /></a>
+        <a href="#" className="icon-link"><FaPhoneVolume /></a>
         <a href="#" className="icon-link"><FaLinkedinIn /></a>
-        <a href="#" className="icon-link"><FaEnvelope /></a>
+        <a href="#" className="icon-link"><IoIosMail size={23}  /></a>
       </div>
 
       <div className="top-bar-center">
