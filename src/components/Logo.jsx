@@ -1,5 +1,15 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
+/**
+ * Logo component - Displays the Flower Station SVG logo
+ * @param {Object} props - Component props
+ * @param {number} props.size - Size of the logo in pixels
+ * @param {string} props.primary - Primary color for the logo
+ * @param {string} props.accent - Accent color for the logo
+ * @param {string} props.className - Additional CSS classes
+ * @returns {JSX.Element} Logo component
+ */
 const Logo = ({ size = 88, primary = '#FFFFFF', accent = '#F599A7', className = '' }) => {
   return (
     <svg
@@ -45,7 +55,14 @@ const Logo = ({ size = 88, primary = '#FFFFFF', accent = '#F599A7', className = 
         </clipPath>
       </defs>
     </svg>
-  )
-}
+  );
+};
 
-export default Logo
+Logo.propTypes = {
+  size: PropTypes.number,
+  primary: PropTypes.string,
+  accent: PropTypes.string,
+  className: PropTypes.string
+};
+
+export default Logo;

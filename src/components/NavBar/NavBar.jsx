@@ -2,7 +2,12 @@ import React from "react";
 import "./Navbar.css";
 import { FaSearch, FaShoppingCart, FaBars, FaRegUser } from "react-icons/fa";
 import Logo from "../Logo";
+import { MAIN_NAVIGATION } from "../../constants/navigation";
 
+/**
+ * NavBar component - Main navigation bar with logo and menu items
+ * @returns {JSX.Element} NavBar component
+ */
 const Navbar = () => {
   return (
     <nav className="navbar-container">
@@ -17,62 +22,18 @@ const Navbar = () => {
         </div>
 
         <ul className="desktop-links">
-          <li>
-            <a href="#">Flowers</a>
-          </li>
-          <li>
-            <a href="#">
-              Trending{" "}
-              <span role="img" aria-label="fire">
-                <img src="/trending.svg" alt="trending icon" />
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Christmas Trees{" "}
-              <span role="img" aria-label="tree">
-                <img src="/tree.svg" alt="Chtistmas icon" />
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="#">Gifts</a>
-          </li>
-          <li>
-            <a href="#">
-              Sale{" "}
-              <span role="img" aria-label="sunflower">
-                <img src="/sunflower.svg" alt="sunflower icon" />
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="#">Luxury</a>
-          </li>
-          <li>
-            <a href="#">Letterbox Flowers</a>
-          </li>
-          <li>
-            <a href="#">Plants</a>
-          </li>
-          <li>
-            <a href="#">
-              Gift Card{" "}
-              <span role="img" aria-label="gift">
-                <img src="/giftcard.svg" alt="giftcard icon" />
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="#">Funeral</a>
-          </li>
-          <li>
-            <a href="#">Wedding & Events</a>
-          </li>
-          <li>
-            <a href="#">School</a>
-          </li>
+          {MAIN_NAVIGATION.map((item) => (
+            <li key={item.id}>
+              <a href={item.href}>
+                {item.text}
+                {item.icon && (
+                  <span role="img" aria-label={item.iconAlt}>
+                    <img src={item.icon} alt={item.iconAlt} />
+                  </span>
+                )}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 

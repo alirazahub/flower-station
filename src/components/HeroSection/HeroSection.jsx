@@ -1,91 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./HeroSection.css";
 import Logo from "../Logo";
+import { CATEGORIES } from "../../constants/navigation";
+import {
+  HERO_SECTIONS,
+  HERO_TABS,
+  HERO_AUTO_ROTATE_INTERVAL,
+} from "../../constants/heroData";
+import { getButtonTextColor } from "../../utils/helpers";
+import { useTabRotation } from "../../hooks";
 
+/**
+ * HeroSection component - Main hero section with rotating content and categories
+ * @returns {JSX.Element} HeroSection component
+ */
 const HeroSection = () => {
-  const [activeTab, setActiveTab] = useState("AUTUMN");
+  const { activeTab, setActiveTab } = useTabRotation(
+    HERO_TABS,
+    HERO_AUTO_ROTATE_INTERVAL
+  );
 
-  const categories = [
-    { name: "All Flowers", image: "/1.jpg" },
-    { name: "Birthday", image: "/2.jpg" },
-    { name: "Virtues Flowers", image: "/3.jpg" },
-    { name: "Luxury", image: "/4.jpg" },
-    { name: "Letterbox", image: "/autumn.jpg" },
-    { name: "Sympathy", image: "/gifting.jpg" },
-    { name: "All Flowers", image: "/autumn.jpg" },
-    { name: "Birthday", image: "/gifting.jpg" },
-    { name: "Virtues Flowers", image: "/christmas.jpg" },
-    { name: "Luxury", image: "/saleflower.jpg" },
-    { name: "Letterbox", image: "/autumn.jpg" },
-    { name: "Sympathy", image: "/gifting.jpg" },
-  ];
-
-  const heroData = {
-    AUTUMN: {
-      id: "autumn",
-      title: "Hand-Picked Flowers By Us, Perfect For You",
-      buttonText: "All Flowers",
-      bgColor: "#FFF0C8",
-      btnColor: "#59670D",
-      textColor: "#1E1E1E",
-      image: "/autumn.jpg",
-      logoTextColor: "#6F6F6E",
-      logoColor: "#F599A7",
-    },
-    GIFTING: {
-      id: "gifting",
-      title: "Beautiful Gifts, Made With Love",
-      buttonText: "Gift Collection",
-      bgColor: "#FFC2B9",
-      btnColor: "#262626",
-      textColor: "#1E1E1E",
-      image: "/gifting.jpg",
-      logoTextColor: "#1E1E1E",
-      logoColor: "#1E1E1E",
-    },
-    CHRISTMAS: {
-      id: "christmas",
-      title: "Christmas Blooms, Made For You",
-      buttonText: "Christmas Collection",
-      bgColor: "#2a3d20",
-      btnColor: "#fff",
-      textColor: "#FFFFFF",
-      image: "/christmas.jpg",
-      logoTextColor: "#FFFFFF",
-      logoColor: "#F599A7",
-    },
-    "SALE FLOWERS": {
-      id: "sale",
-      title: "Stunning Flowers At Lower Prices",
-      buttonText: "Sale Flowers",
-      bgColor: "#d1603d",
-      btnColor: "#fff",
-      textColor: "#FFFFFF",
-      image: "/saleflower.jpg",
-      logoTextColor: "#FFFFFF",
-      logoColor: "#F599A7",
-    },
-  };
-
-  const tabs = Object.keys(heroData);
-  const currentData = heroData[activeTab];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTab((prevTab) => {
-        const currentIndex = tabs.indexOf(prevTab);
-        const nextIndex = (currentIndex + 1) % tabs.length;
-        return tabs[nextIndex];
-      });
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [tabs]);
+  const currentData = HERO_SECTIONS[activeTab];
 
   return (
     <>
       <div className="mobile-category-nav">
-        {categories.map((cat, index) => (
-          <div className="cat-item" key={index}>
+        {CATEGORIES.map((cat) => (
+          <div className="cat-item" key={cat.id}>
             <div className="cat-img-wrapper">
               <img src={cat.image} alt={cat.name} />
             </div>
@@ -114,7 +55,7 @@ const HeroSection = () => {
               className="hero-cta"
               style={{
                 backgroundColor: currentData.btnColor,
-                color: currentData.btnColor === "#fff" ? "#222" : "#fff",
+                color: getButtonTextColor(currentData.btnColor),
               }}
             >
               {currentData.buttonText}
@@ -136,7 +77,7 @@ const HeroSection = () => {
           <div className="mobile-overlay"></div>
 
           <div className="hero-tabs-container">
-            {tabs.map((tab) => (
+            {HERO_TABS.map((tab) => (
               <button
                 key={tab}
                 className={`tab-btn ${activeTab === tab ? "active" : ""}`}
