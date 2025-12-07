@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from "react";
 
 /**
  * Custom hook for managing tab rotation
@@ -8,20 +8,30 @@ import { useState, useEffect } from 'react';
  */
 export const useTabRotation = (tabs, interval) => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
+  const intervalRef = useRef(null);
 
-  useEffect(() => {
-    if (!tabs || tabs.length === 0) return;
+  const resetInterval = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
 
-    const rotationInterval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setActiveTab((prevTab) => {
         const currentIndex = tabs.indexOf(prevTab);
         const nextIndex = (currentIndex + 1) % tabs.length;
         return tabs[nextIndex];
       });
     }, interval);
+  };
 
-    return () => clearInterval(rotationInterval);
+  useEffect(() => {
+    if (!tabs || tabs.length === 0) return;
+
+    resetInterval();
+    return () => clearInterval(intervalRef.current);
   }, [tabs, interval]);
+
+  useEffect(() => {
+    resetInterval();
+  }, [activeTab]);
 
   return { activeTab, setActiveTab };
 };
